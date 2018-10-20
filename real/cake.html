@@ -181,7 +181,36 @@
   <script src='js/jquery.js'></script>
 
   <script src="js/index.js"></script>
-  <audio src="music/2.mp3" autoplay="autoplay" loop="loop">
+  
+  
+  	
+	
+	  <audio id="bgmusic" src="music/2.mp3" autoplay preload loop></audio>
+
+    <!-- 当使用方法1时必须加载 JS-SDK 的 JS 文件, 方法2不需要加载这个 JS -->
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script>
+
+    function autoPlayAudio1() {
+        wx.config({
+            // 配置信息, 即使不正确也能使用 wx.ready
+            debug: false,
+            appId: '',
+            timestamp: 1,
+            nonceStr: '',
+            signature: '',
+            jsApiList: []
+        });
+        wx.ready(function() {
+            document.getElementById('bgmusic').play();
+        });
+    }
+
+    
+    autoPlayAudio1(); // 推荐使用方法1
+    // autoPlayAudio2(); // 也可以试一试方法2
+    </script>
+	
 </body>
 
 </html>
