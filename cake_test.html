@@ -111,20 +111,20 @@ function spawnSeed() {
     seeds.push(seed);
 }
 
-function autoPlayAudio1(pow) {
-	var play = function(){
-			pow.play();
-			document.removeEventListener("touchstart",play, false);
-		};
-	pow.play();
-	document.addEventListener("WeixinJSBridgeReady", function () {
-		play();
-	}, false);
-	document.addEventListener('YixinJSBridgeReady', function() {
-		play();
-	}, false);
-	document.addEventListener("touchstart",play, false);
-}
+//function autoPlayAudio1(pow) {
+//	var play = function(){
+//			pow.play();
+//			//document.removeEventListener("touchstart",play, false);
+//		};
+//	pow.play();
+//	document.addEventListener("WeixinJSBridgeReady", function () {
+//		play();
+//	}, false);
+//	document.addEventListener('YixinJSBridgeReady', function() {
+//		play();
+//	}, false);
+//	document.addEventListener("touchstart",play, false);
+//}
 
 function splode(x, y, z) {
 
@@ -204,8 +204,19 @@ function splode(x, y, z) {
     }
     d = Math.sqrt((x - playerX) * (x - playerX) + (y - playerY) * (y - playerY) + (z - playerZ) * (z - playerZ));
     pow.volume = 1.5 / (1 + d / 10);
-    //pow.play();
-	autoPlayAudio1(pow);
+	
+	var play = function(){  
+		        pow.play();  
+		        document.removeEventListener("touchstart",play, false);  
+		    };  
+		pow.play();  
+		document.addEventListener("WeixinJSBridgeReady", function () {  
+		    play();  
+		}, false);  
+		document.addEventListener('YixinJSBridgeReady', function() {  
+		    play();  
+		}, false);  
+		document.addEventListener("touchstart",play, false); 
 }
 
 function doLogic() {
