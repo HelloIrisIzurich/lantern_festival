@@ -191,23 +191,25 @@
     <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
     <script>
 
-    function autoPlayAudio1() {
-        wx.config({
-            // 配置信息, 即使不正确也能使用 wx.ready
-            debug: false,
-            appId: '',
-            timestamp: 1,
-            nonceStr: '',
-            signature: '',
-            jsApiList: []
-        });
-        wx.ready(function() {
-            document.getElementById('bgmusic').play();
-        });
-    }
+function audioAutoPlay(id){
+
+var audio = document.getElementById(id),  
+    play = function(){  
+        audio.play();  
+        document.removeEventListener("touchstart",play, false);  
+    };  
+audio.play();  
+document.addEventListener("WeixinJSBridgeReady", function () {  
+    play();  
+}, false);  
+document.addEventListener('YixinJSBridgeReady', function() {  
+    play();  
+}, false);  
+document.addEventListener("touchstart",play, false);  
+} 
 
     
-    autoPlayAudio1(); // 推荐使用方法1
+    autoPlayAudio1("bgmusic"); // 推荐使用方法1
     // autoPlayAudio2(); // 也可以试一试方法2
     </script>
 	
