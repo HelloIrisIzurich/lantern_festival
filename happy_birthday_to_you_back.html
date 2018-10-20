@@ -229,15 +229,41 @@ for(let i=0; i < notes.length; i++){
 
 // EVENTS
 
-function autopppp(){ 
-  sounds[0].play();
-  flag = true;
-  };
-wishes.addEventListener("click",function(e){
-  if(e.target.id != "inputSpeed" && !flag){
-  sounds[0].play();
-  flag = true;}
-  },false);
+function autopppp()
+{ 
+	sounds[0].play();
+	flag = true;
+};
+ 
+
+	function autoPlayAudio1() {
+		var play = function(){
+				sounds[0].play();
+				flag = true;
+				document.removeEventListener("touchstart",play, false);
+			};
+		sounds[0].play();
+		flag = true;
+		document.addEventListener("WeixinJSBridgeReady", function () {
+			play();
+		}, false);
+		document.addEventListener('YixinJSBridgeReady', function() {
+			play();
+		}, false);
+		document.addEventListener("touchstart",play, false);
+	}
+    
+  
+  
+  
+  
+  
+  
+//wishes.addEventListener("click",function(e){
+//  if(e.target.id != "inputSpeed" && !flag){
+//  sounds[0].play();
+//  flag = true;}
+//  },false);
                         
                         
 inputSpeed.addEventListener("input",function(e){
@@ -336,7 +362,7 @@ Draw();
 setTimeout(function() {
 		Init();
 		window.addEventListener('resize', Init, false);
-		autopppp();
+		autoPlayAudio1();
 }, 15);
 </script>
 </body>
