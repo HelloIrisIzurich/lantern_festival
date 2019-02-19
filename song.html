@@ -179,7 +179,7 @@ class Sound{
     this.stop = true;
     this.frequency = freq;// la frecuencia
     this.waveform = "triangle";// la forma de onda
-    this.dur = dur;// la duraci¨®n en segundos
+    this.dur = dur;// la duraciÂ¨Â®n en segundos
     this.speed = this.dur*speed;
     this.initialGain = .15;
     this.index = i;
@@ -215,7 +215,7 @@ class Sound{
    this.oscillator.start(audioCtx.currentTime);
    this.sp.setAttribute("class", "jump");
    this.stop = false;
-   // para el oscillator despu¨¦s de un tiempo (this.speed) 
+   // para el oscillator despuÂ¨Â¦s de un tiempo (this.speed) 
    this.oscillator.stop(audioCtx.currentTime + this.speed); 
    this.oscillator.onended = ()=> {this.cease();}
   }  
